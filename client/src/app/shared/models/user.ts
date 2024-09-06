@@ -2,10 +2,10 @@ export type User = {
     firstName: string;
     lastName: string;
     email: string;
-    address: Addresss;
+    address: Address;
 }
 
-export type Addresss = {
+export type Address = {
     line1: string;
     line2?: string;
     city: string;

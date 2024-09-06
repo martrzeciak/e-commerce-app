@@ -53,6 +53,20 @@ namespace Infrastructure.Data
 
                     await context.SaveChangesAsync();
                 }
+
+                if (!context.DeliveryMethods.Any())
+                {
+                    var deliveryMethodsData =
+                        File.ReadAllText("../Infrastructure/Data/SeedData/delivery.json");
+
+                    var deliveryMethods = JsonSerializer.Deserialize<List<DeliveryMethod>>(deliveryMethodsData);
+
+                    if (deliveryMethods == null) return;
+
+                    context.DeliveryMethods.AddRange(deliveryMethods);
+
+                    await context.SaveChangesAsync();
+                }
             }
             catch (Exception ex)
             {

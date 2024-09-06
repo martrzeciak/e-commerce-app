@@ -56,7 +56,7 @@ namespace API.Controllers
                 user.FirstName,
                 user.LastName,
                 user.Email,
-                Adress = user.Address?.ToDto()
+                Address = user.Address?.ToDto()
             });
         }
 

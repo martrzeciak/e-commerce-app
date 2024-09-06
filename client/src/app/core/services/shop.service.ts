@@ -44,6 +44,7 @@ export class ShopService {
 
   getBrands() {
     if (this.brands.length > 0) return;
+
     return this.http.get<string[]>(this.baseUrl + 'products/brands').subscribe({
       next: response => this.brands = response
     })
@@ -51,6 +52,7 @@ export class ShopService {
 
   getTypes() {
     if (this.types.length > 0) return;
+    
     return this.http.get<string[]>(this.baseUrl + 'products/types').subscribe({
       next: response => this.types = response
     })
