@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers
 {
     public class PaymentsController(IPaymentService paymentService, 
-        IGenericRepository<DeliveryMethod> dmRepo) : BaseApiController
+        IUnitOfWork unitOfWork) : BaseApiController
     {
         [Authorize]
         [HttpPost("{cartId}")] 
@@ -22,7 +22,7 @@ namespace API.Controllers
         [HttpGet("delivery-method")]
         public async Task<ActionResult<IReadOnlyList<DeliveryMethod>>> GetDeliveryMethods()
         {
-            return Ok(await dmRepo.ListAllAsync());
+            return Ok(await unitOfWork.Repository<DeliveryMethod>().ListAllAsync());
         }
     }
 }
