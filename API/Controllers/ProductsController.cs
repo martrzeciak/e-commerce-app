@@ -1,5 +1,4 @@
-﻿using API.RequestHelpers;
-using Core.Entities;
+﻿using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
 using Microsoft.AspNetCore.Mvc;
@@ -10,14 +9,14 @@ namespace API.Controllers
     {
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts(
-            [FromQuery]ProductSpecParams specParams)
+            [FromQuery] ProductSpecParams specParams)
         {
             var spec = new ProductSpecification(specParams);
 
             return await CreatePageResult(
-                unitOfWork.Repository<Product>(), 
-                spec, 
-                specParams.PageIndex, 
+                unitOfWork.Repository<Product>(),
+                spec,
+                specParams.PageIndex,
                 specParams.PageSize
             );
         }
@@ -83,7 +82,7 @@ namespace API.Controllers
         {
             var spec = new BrandListSpecification();
 
-            return Ok(await unitOfWork.Repository<Product>().ListAsync(spec)); 
+            return Ok(await unitOfWork.Repository<Product>().ListAsync(spec));
         }
 
         [HttpGet("types")]
