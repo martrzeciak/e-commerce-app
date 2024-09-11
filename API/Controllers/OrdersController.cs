@@ -10,7 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers
 {
     [Authorize]
-    public class OrdersController(IUnitOfWork unitOfWork, ICartService cartService) : BaseApiController
+    public class OrdersController(IUnitOfWork unitOfWork, ICartService cartService) 
+        : BaseApiController
     {
         [HttpPost]
         public async Task<ActionResult<OrderDto>> CreateOrder(CreateOrderDto orderDto)
